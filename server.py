@@ -3,7 +3,7 @@ from translate import Translator
 
 app = Flask(__name__)
 
-translator= Translator(to_lang="en")
+translator= Translator(to_lang="en", from_lang='ru')
 
 @app.route('/post', methods=['POST'])
 def post():
@@ -26,3 +26,6 @@ def post():
     translated = str(translator.translate(word))
     res['response']['text'] = translated
     return jsonify(res)
+
+if __name__ == '__main__':
+    app.run(port = 8080, host='127.0.0.1')
